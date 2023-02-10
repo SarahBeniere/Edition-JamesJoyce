@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+   
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A Painful Case</title>
+            <author ref="https://data.bnf.fr/fr/11909158/james_joyce/">
+               <forename>James</forename>
+               <surname>Joyce</surname>
+            </author>
+         </titleStmt>
+         <editionStmt>
+            <edition>Édition réalisée pour l'évaluation du module de XML-TEI du Master TNAH de
+               l'École nationale des chartes</edition>
+            <respStmt>
+               <resp>Encodage par</resp>
+               <name>
+                  <forename>Sarah</forename>
+                  <surname>Bénière</surname>
+               </name>
+            </respStmt>
+         </editionStmt>
+         <publicationStmt>
+            <publisher>École nationale des chartes</publisher>
+            <pubPlace>Paris</pubPlace>
+            <date when="2023-02">Février 2023</date>
+         </publicationStmt>
+         <sourceDesc>
+            <biblStruct>
+               <monogr>
+                  <author ref="https://data.bnf.fr/fr/11909158/james_joyce/">
+                     <forename>James</forename>
+                     <surname>Joyce</surname>
+                  </author>
+                  <title>Dubliners</title>
+                  <imprint>
+                     <publisher>Oxford University Press</publisher>
+                     <pubPlace>New York</pubPlace>
+                     <date when-iso="2008">2008</date>
+                  </imprint>
+               </monogr>
+            </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   
+   <text>
+      <body>
+         <div1>
+            <head>
+               Guide d'encodage de la nouelle "A Painful Case", extraite du recueil de <hi rend="italic">Dubliners</hi> de James Joyce, pour mettre en avant les formes de discours rapporté
+            </head>
+            <p>
+               Le discours rapporté est un sujet de linguistique très riche et parfois diffcile à appréhender, ne serait-ce que par la différence en termes d'approche. Cette édition se propose de mettre en évidence les formes de discours rapporté dans la nouvelle "A Painful Case" par le prisme de la linguistique énonciative.  
+            </p>
+            <p>Dans cette approche, on distingue d'une part les formes dites "canoniques" de discours rapporté : discours direct, discours indirect classique et discours indirect libre. Mais d'autre part, on reconnaît l'existence de formes dites "hybrides" : discours direct libre, discours indirect hybride et discours indirect semi-libre. La linguistique énonciative considère également les notions de voix et de point de vue, qu'il serait bien trop compliqué de traiter dans une édition TEI puisqu'elles relèvent du concept d'hybridité sémantique. Nous ne pouvons que nous contenter d'encoder syntaxiquement le texte pour mettre en évidence des occurrences de discours rapporté, qu'elles soient canoniques ou hybrides.</p>
+            
+            <div2>
+               <head>Structure du fichier XML</head>
+               <p>Le document XML est contenu dans l'élément racine <gi>TEI</gi>. Nous avons fait le choix de ne pas utiliser la customisation <gi>tei_corpus</gi> puisqu'il s'agit ici de l'encodage d'un unique texte.</p>
+               <p>Le <gi>teiHeader</gi> contient les métadonnées du document et le <gi>text</gi> (lui-même contenu dans <gi>body</gi>) contient le texte édité.</p>
+               <div3>
+                  <head>Structure du teiHeader</head>
+                  <div4>
+                     <head><gi>fileDesc</gi></head>
+                     <p>Le <gi>fileDesc</gi> se compose de quatre éléments :
+                        <specList>
+                           <specDesc key="titleStmt"/>
+                           <specDesc key="editionStmt"/>
+                           <specDesc key="publicationStmt"/>
+                           <specDesc key="sourceDesc"/>
+                        </specList>
+                     </p>
+                     <p>Les éléments <gi>titleStmt</gi>, <gi>editionStmt</gi> et <gi>publicationStmt</gi> contiennent les métadonnées de notre édition du texte. L'élément <gi>sourceDesc</gi> contient la référence bibliographique du texte original utilisé pour produire cette édition.</p>                     
+                  </div4>
+                  <div4>
+                     <head><gi>profileDesc</gi></head>
+                     <p>Le <gi>profileDesc</gi> contient un élément unique <gi>particDesc</gi> dans la mesure où les noms de lieux, pourtant présents dans la nouvelle, n'ont aucune incidence sur l'identification des formes de discours rapporté.</p>
+                  </div4>
+               </div3>
+               <div3>
+                  <head>Structure du texte</head>
+                  <p>La nouvelle est une texte en prose, que nous avons divisé en deux parties. La partie principale, l'histoire, est coupée au moment où le personnage principal lit un article de journal, qui nous est entièrement retranscrit. C'est pour cela que les éléments <gi>div</gi> ont un attribut obligatoire <att>type</att> dont la valeur doit être "<val>histoire</val>" ou "<val>article-journal</val>".</p>
+                  <p>Ces deux parties principales sont caractérisées par élément <gi>head</gi>, suivi de plusieurs éléments <gi>p</gi>.</p>
+               </div3>
+            </div2>
+            
+            <div2>
+               <head>Encodage</head>
+               <p>Par définition, les occurrences de discours rapporté peuvent être difficiles à distinguées puisque leur forme est poreuse. Le choix de la balise <gi>seg</gi> pour délimiter ces occurrences, qui se composent parfois de plusieurs phrases, semblait être le plus logique.</p>
+               <p>Toutefois, les attributs permettant de décrire finement chaque occurrence sont limités. Ainsi, seuls les attributs <att>type</att> et <att>subtype</att> permettent d'affiner l'identification. En fonction de ce que l'on veut montrer, dans le cadre d'une étude très globale par exemple, l'on pourrait souhaiter catégoriser de façon très fine les types de verbes. Prenons l'exemple d'un verbe de parole : le verbe étant un mot, il appartient à l'élément <gi>w</gi>, son attribut <att>type</att> sera "<val>verbe</val>" et son deuxième attribut <att>subtype</att> sera "<val>parole</val>". Or, il existe parmi les verbes de parole les verbes neutres et non-neutres, parmi lesquels on fait encore la distinction entre les descriptifs, les descriptifs chronologiques et les appréciatifs. Cela limite donc les possibilités d'analyse, et par conséquence nous prive de nombre d'exemples qui seraient utiles dans un but pédagogique.</p>
+               <p>Malgré tout il est tout à fait possible de produire une édition satisfaisante quant à une introduction à l'étude des formes de discours rapporté. La TEI prévoit en effet plusieurs balises à usage linguistique qui se sont avérées bien pratiques. C'est notamment le cas de la balise <gi>cl</gi> pour délimiter les propositions, qui rythment entre autres la syntaxe des énoncés de discours indirect classique [proposition principale + conjonction de subordination + proposition subordonnée (complétive, interrogative indirecte, infinitive, relative]).</p>
+               <p>Le cas des conjonctions est tout particulièrement intéressant. En général, la conjonction est un mot que l'on peut décrire à l'aide de la balise <gi>w</gi>, mais il arrive qu'elle soit absente de l'énoncé et que ce soit en fait un signe de ponctuation ou une forme verbale qui assume la fonction de conjonction de subordination, d'où l'utilité de l'attribut <att>function</att>, qui est dans ces cas-là indispensable.</p>
+               <p>Chaque personnage est identifié grâce à un identifiant <att>xml:id</att>. Cela permet de marquer clairement qui parle ou qui pense dans un énoncé où l'on n'aurait que des pronoms.</p>
+            </div2>
+         </div1>
+         
+         <div1>
+            <head>Spécifications</head>
+            
+            <schemaSpec ident="oddbyexample" start="TEI ">
+               <!-- Modules de base -->
+               <moduleRef key="tei"/>
+               <moduleRef key="header"
+                  include="teiHeader fileDesc titleStmt editionStmt edition publicationStmt sourceDesc profileDesc"/>
+               <moduleRef key="core"
+                  include="p emph q name date head note lb monogr author respStmt resp title imprint publisher pubPlace biblStruct"/>
+               <moduleRef key="textstructure" include="TEI text body div"/>
+               
+               <!-- Modules additionnels -->
+               <moduleRef key="namesdates" include="persName surname forename listPerson person"/>
+               <moduleRef key="corpus" include="particDesc"/>
+               <moduleRef key="linking" include="seg"/>
+               <moduleRef key="analysis" include="cl phr w pc"/>
+               
+
+
+               <!-- Règles personnalisées -->
+               
+               <!-- Structure du texte -->                                            
+               <elementSpec ident="head" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="article-journal"/>
+                           <valItem ident="nouvelle"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="subtype" mode="change" usage="rec">
+                        <desc>L'attribut @subtype est recommandé</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="sous-titre"/>
+                           <valItem ident="titre-principal"/>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="div" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire et doit contenir la valeur "histoire" ou "article-journal"</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="article-journal"/>
+                           <valItem ident="histoire"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               
+               <!-- Corps du texte -->
+               <elementSpec ident="seg" mode="change">
+                  <attList>
+                     <attDef ident="function" mode="change" usage="rec">
+                        <desc>L'attribut @function est généralement facultatif, mais recommandé en cas de discours indirect libre</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="introducteur-discours-indirect-libre"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="discours-citant"/>
+                           <valItem ident="discours-cité"/>
+                           <valItem ident="discours-direct"/>
+                           <valItem ident="discours-indirect"/>
+                           <valItem ident="discours-indirect-libre"/>
+                           <valItem ident="discours-narrativise"/>
+                           <valItem ident="discours-narrativisé"/>
+                           <valItem ident="effet-de-discours-rapporté"/>
+                           <valItem ident="segment-contextualisant"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="subtype" mode="change" usage="rec">
+                        <desc>L'attribut @subtype est recommandé</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="classique"/>
+                           <valItem ident="endophasique"/>
+                           <valItem ident="hybride"/>
+                           <valItem ident="incise-position-initiale"/>
+                           <valItem ident="libre"/>
+                           <valItem ident="locutoire"/>
+                           <valItem ident="locutoire-avec-incise"/>
+                           <valItem ident="pragmatique"/>
+                           <valItem ident="sans-incise"/>
+                           <valItem ident="semi-libre"/>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="q" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire et sa valeur doit être "spoken"</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="spoken"/>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="cl" mode="change">
+                  <attList>
+                     <attDef ident="function" mode="change" usage="opt">
+                        <valList mode="add" type="closed">
+                           <valItem ident="introducteur-discours-direct"/>
+                           <valItem ident="introducteur-discours-rapporté"/>                       
+                        </valList>
+                     </attDef>
+                     <attDef ident="type" mode="change" usage="req">
+                        <valList mode="add" type="closed">
+                           <valItem ident="incise"/>
+                           <valItem ident="principale"/>
+                           <valItem ident="segment-contextualisant"/>
+                           <valItem ident="subordonnée"/>
+                        </valList>
+                     </attDef>
+                     <!-- L'attribut @subtype est obligatoire quand la valeur de l'attribut @type est "subordonnée" ou "incise" -->
+                     <attDef ident="subtype" mode="change" usage="rec">
+                        <valList mode="add" type="closed">
+                           <valItem ident="complétive"/>
+                           <valItem ident="gérondive"/>
+                           <valItem ident="infinitive"/>
+                           <valItem ident="interrogative-directe"/>
+                           <valItem ident="position-finale"/>
+                           <valItem ident="position-médiane"/>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="phr" mode="change">
+                  <attList>
+                     <attDef ident="function" mode="change" usage="req">
+                        <desc>L'attribut @function est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="marqueur-discours-indirect-libre"/>
+                           <valItem ident="marqueur-subjectivité"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="nominal"/>
+                           <valItem ident="verbal"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="persName" mode="change">
+                  <attList>
+                     <attDef ident="when" mode="delete"/>
+                     <attDef ident="when-iso" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                     <!-- Ajout de l'attribut @ref qui doit contenir une référence à un xml:id -->
+                     <attDef ident="ref" mode="add" usage="req">
+                        <desc>L'attribut @ref doit contenir une référence à un xml:id</desc>
+                        <datatype>
+                           <dataRef key="teidata.pointer"></dataRef>
+                        </datatype>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="w" mode="change">
+                  <attList>
+                     <attDef ident="function" mode="change" usage="rec">
+                        <desc>L'attribut @function est recommandé</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="conjonction-subordination"/>
+                           <valItem ident="marqueur-discours-indirect-libre"/>
+                           <valItem ident="marqueur-subjectivité"/>
+                           <valItem ident="proposition-principale"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="type" mode="change" usage="req">
+                        <desc>L'attribut @type est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="adjectif"/>
+                           <valItem ident="conjonction"/>
+                           <valItem ident="particule"/>
+                           <valItem ident="pronom"/>
+                           <valItem ident="verbe"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="subtype" mode="change" usage="rec">
+                        <desc>L'attribut @subtype est recommandé</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="action"/>
+                           <valItem ident="coordination"/>
+                           <valItem ident="interrogatif"/>
+                           <valItem ident="parole"/>
+                           <valItem ident="pensée"/>
+                           <valItem ident="qualificatif"/>
+                           <valItem ident="réflexif"/>
+                           <valItem ident="subordination"/>
+                        </valList>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+               
+               <elementSpec ident="pc" mode="change">
+                  <attList>
+                     <attDef ident="force" mode="delete"/>
+                     <attDef ident="unit" mode="delete"/>
+                     <attDef ident="pre" mode="delete"/>
+                     <attDef ident="function" mode="change" usage="req">
+                        <desc>L'attribut @function est obligatoire</desc>
+                        <valList mode="add" type="closed">
+                           <valItem ident="conjonction-coordination"/>
+                           <valItem ident="introducteur-dicours-rapporté"/>
+                           <valItem ident="introducteur-discours-direct"/>
+                           <valItem ident="introducteur-discours-rapporté"/>
+                           <valItem ident="marqueur-discours-direct-libre"/>
+                           <valItem ident="marqueur-subjectivité"/>
+                        </valList>
+                     </attDef>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>               
+               
+               
+               
+               <!-- Règles inchangées -->
+               <elementSpec ident="TEI" mode="change">
+                  <attList>
+                     <attDef ident="version" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               
+               <!-- Éléments du teiHeader -->                              
+               <!-- Mention d'édition -->
+               <elementSpec ident="respStmt" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="resp" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="when" mode="delete"/>
+                     <attDef ident="when-iso" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="name" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="when" mode="delete"/>
+                     <attDef ident="when-iso" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>               
+               
+               <!-- Description bibliographique -->
+               <elementSpec ident="biblStruct" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="author" mode="change">
+                  <attList>
+                     <attDef ident="when" mode="delete"/>
+                     <attDef ident="when-iso" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="forename" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="surname" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="title" mode="change">
+                  <attList>
+                     <attDef ident="level" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="when" mode="delete"/>
+                     <attDef ident="when-iso" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="publisher" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="pubPlace" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="date" mode="change">
+                  <attList>
+                     <attDef ident="ref" mode="delete"/>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               <!-- Identification des personnages -->                     
+               <elementSpec ident="listPerson" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="person" mode="change">
+                  <attList>
+                     <attDef ident="role" mode="delete"/>
+                     <attDef ident="sex" mode="delete"/>
+                     <attDef ident="gender" mode="delete"/>
+                     <attDef ident="age" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="note" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               
+               <!-- Corps du texte -->
+               <elementSpec ident="text" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               <elementSpec ident="lb" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="subtype" mode="delete"/>
+                  </attList>
+               </elementSpec>
+               
+               
+               
+               <!-- Suppression des attributs par classe -->
+               <classSpec ident="att.textCritical" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="type" mode="delete"/>
+                     <attDef ident="cause" mode="delete"/>
+                     <attDef ident="varSeq" mode="delete"/>
+                     <attDef ident="require" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.datable.iso" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="notBefore-iso" mode="delete"/>
+                     <attDef ident="notAfter-iso" mode="delete"/>
+                     <attDef ident="from-iso" mode="delete"/>
+                     <attDef ident="to-iso" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.lexicographic" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="expand" mode="delete"/>
+                     <attDef ident="split" mode="delete"/>
+                     <attDef ident="value" mode="delete"/>
+                     <attDef ident="location" mode="delete"/>
+                     <attDef ident="mergedIn" mode="delete"/>
+                     <attDef ident="opt" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.combinable" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="mode" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.identified" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="ident" mode="delete"/>
+                     <attDef ident="predeclare" mode="delete"/>
+                     <attDef ident="module" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.ascribed.directed" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="toWhom" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.canonical" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="key" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.dimensions" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="unit" mode="delete"/>
+                     <attDef ident="quantity" mode="delete"/>
+                     <attDef ident="extent" mode="delete"/>
+                     <attDef ident="precision" mode="delete"/>
+                     <attDef ident="scope" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.damaged" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="agent" mode="delete"/>
+                     <attDef ident="degree" mode="delete"/>
+                     <attDef ident="group" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.datable.w3c" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="notBefore" mode="delete"/>
+                     <attDef ident="notAfter" mode="delete"/>
+                     <attDef ident="from" mode="delete"/>
+                     <attDef ident="to" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.datable" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="calendar" mode="delete"/>
+                     <attDef ident="period" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.divLike" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="org" mode="delete"/>
+                     <attDef ident="sample" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.media" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="width" mode="delete"/>
+                     <attDef ident="height" mode="delete"/>
+                     <attDef ident="scale" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.naming" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="role" mode="delete"/>
+                     <attDef ident="nymRef" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.pointing.group" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="domains" mode="delete"/>
+                     <attDef ident="targFunc" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.timed" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="start" mode="delete"/>
+                     <attDef ident="end" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.transcriptional" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="status" mode="delete"/>
+                     <attDef ident="cause" mode="delete"/>
+                     <attDef ident="seq" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.personal" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="full" mode="delete"/>
+                     <attDef ident="sort" mode="delete"/>
+                  </attList>
+               </classSpec>
+               <classSpec ident="att.linguistic" type="atts" mode="change">
+                  <attList>
+                     <attDef ident="lemma" mode="delete"/>
+                     <attDef ident="lemmaRef" mode="delete"/>
+                     <attDef ident="pos" mode="delete"/>
+                     <attDef ident="msd" mode="delete"/>
+                     <attDef ident="join" mode="delete"/>
+                  </attList>
+               </classSpec>
+               
+               
+               <!-- Classes -->
+               <classRef key="att.textCritical"/>
+               <classRef key="model.rdgLike"/>
+               <classRef key="model.rdgPart"/>
+               <classRef key="model.physDescPart"/>
+               <classRef key="att.datable.iso"/>
+               <classRef key="model.persNamePart"/>
+               <classRef key="att.lexicographic"/>
+               <classRef key="model.entryLike"/>
+               <classRef key="model.formPart"/>
+               <classRef key="model.gramPart"/>
+               <classRef key="model.lexicalRefinement"/>
+               <classRef key="model.morphLike"/>
+               <classRef key="model.ptrLike.form"/>
+               <classRef key="att.combinable"/>
+               <classRef key="att.identified"/>
+               <classRef key="model.contentPart"/>
+               <classRef key="att.linguistic"/>              
+            </schemaSpec>
+         </div1>
+      </body>
+   </text>
+</TEI>

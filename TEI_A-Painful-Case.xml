@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="RNG_A-Painful-Case.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="RNG_A-Painful-Case.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<!-- DTD interne pour le tiret cadratin -->
+<!DOCTYPE text [
+   <!ENTITY mdash "—">
+]>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>A Painful Case</title>
+                <author ref="https://data.bnf.fr/fr/11909158/james_joyce/">
+                    <forename>James</forename>
+                    <surname>Joyce</surname>
+                </author>
+            </titleStmt>
+            <editionStmt>
+                <edition>Édition réalisée pour l'évaluation du module de XML-TEI du Master TNAH de
+                    l'École nationale des chartes</edition>
+                <respStmt>
+                    <resp>Encodage par</resp>
+                    <name>
+                        <forename>Sarah</forename>
+                        <surname>Bénière</surname>
+                    </name>
+                </respStmt>
+            </editionStmt>
+            <publicationStmt>
+                <publisher>École nationale des chartes</publisher>
+                <pubPlace>Paris</pubPlace>
+                <date when="2023-02">Février 2023</date>
+            </publicationStmt>
+            <sourceDesc>
+                <biblStruct>
+                    <monogr>
+                        <author ref="https://data.bnf.fr/fr/11909158/james_joyce/">
+                            <forename>James</forename>
+                            <surname>Joyce</surname>
+                        </author>
+                        <title>Dubliners</title>
+                        <imprint>
+                            <publisher>Oxford University Press</publisher>
+                            <pubPlace>New York</pubPlace>
+                            <date when-iso="2008">2008</date>
+                        </imprint>
+                    </monogr>
+                </biblStruct>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <particDesc>
+                <listPerson>
+                    <person xml:id="JamesDuffy">
+                        <persName>James Duffy</persName>
+                        <note>Personnage principal</note>
+                    </person>
+                    <person xml:id="EmilySinico">
+                        <persName>Emily Sinico</persName>
+                        <note> Épouse du <persName ref="#CapitaineSinico">Capitaine
+                                Sinico</persName>, mère de <persName ref="#MarySinico">Mary
+                                Sinico</persName>, a entretenu une relation avec <persName
+                                ref="#JamesDuffy">James Duffy</persName>. </note>
+                    </person>
+                    <person xml:id="CapitaineSinico">
+                        <persName>Captain Sinico</persName>
+                        <note>Mari de <persName ref="#EmilySinico">Emily Sinico</persName> et père
+                            de <persName ref="#MarySinico">Mary Sinico</persName>
+                        </note>
+                    </person>
+                    <person xml:id="MarySinico">
+                        <persName>Mary Sinico</persName>
+                        <note>Fille de <persName ref="#EmilySinico">Emily Sinico</persName> et du
+                                <persName ref="#CapitaineSinico">Capitaine Sinico</persName>.
+                        </note>
+                    </person>
+                    <person xml:id="Secondaire1">
+                        <persName>The girl</persName>
+                        <note>Serveuse dans le restaurant de George's Street</note>
+                    </person>
+                    <person xml:id="Secondaire2">
+                        <persName>James Lennon</persName>
+                        <note>Conducteur du train de Sydney Parade</note>
+                    </person>
+                    <person xml:id="Secondaire3">
+                        <persName>P. Dunne</persName>
+                        <note>Porteur de chemin de fer</note>
+                    </person>
+                    <person xml:id="Secondaire4">
+                        <persName>A juror</persName>
+                        <note>Un juré (anonyme)</note>
+                    </person>
+                    <person xml:id="Secondaire5">
+                        <persName>Witness</persName>
+                        <note>Un témoin (anonyme)</note>
+                    </person>
+                    <person xml:id="Secondaire6">
+                        <persName>Sergeant Croly</persName>
+                        <note>Sergent de police</note>
+                    </person>
+                    <person xml:id="Secondaire7">
+                        <persName>Constable57E</persName>
+                        <note>Agent de police</note>
+                    </person>
+                    <person xml:id="Secondaire8">
+                        <persName>Dr Halpin</persName>
+                        <note>Chirurgien au City of Dublin Hospital </note>
+                    </person>
+                    <person xml:id="Secondaire9">
+                        <persName>Mr H. B. Patterson Finlay</persName>
+                        <name>Représentant de la compagnie ferroviaire</name>
+                    </person>
+                    <person xml:id="Secondaire10">
+                        <persName>The jury</persName>
+                        <note>Groupe des jurés (anonyme)</note>
+                    </person>
+                    <person xml:id="Secondaire11">
+                        <persName>The Deputy Coroner</persName>
+                        <note>Médecin légiste</note>
+                    </person>
+                </listPerson>
+            </particDesc>
+        </profileDesc>
+    </teiHeader>
+
+    <text>
+        <body>
+            <head type="nouvelle" rend="alignement(centré) casse(majuscules)">A PAINFUL CASE</head>
+
+            <div type="histoire">
+                <p> 
+                    Mr James Duffy lived in Chapelizod because he wished to live as far as possible
+                    from the city of which he was a citizen and because he found all the other
+                    suburbs of Dublin mean, modern and pretentious. He lived in an old sombre house
+                    and from his window he could look into the disused distillery or upwards along
+                    the shallow river on which Dublin is built. The lofty walls of his uncarpeted
+                    room were free from pictures. He had himself bought every article of furniture
+                    in the room: a black iron bedstead, an iron washstand, four cane chairs, a
+                    clothes-rack, a coal-stuttle, a fender and irons and a square table on which lay
+                    a double desk. A bookcase had been made in an alcove by means of shelves of
+                    white wood. The bed was clothed with white bed-clothes and a black and scarlet
+                    rug covered the foot. A little hand-mirror hung above the washstand and during
+                    the day a white-shaded lamp stood as the sole ornament of the mantelpiece. The
+                    books on the white wooden shelves were arranged from below upwards according to
+                    bulk. A complete Wordsworth stood at one end of the lowest sheld and a copy of
+                    the <emph rend="italic">Maynooth Catechism</emph>, sewn into the cloth cover of
+                    a notebook, stood at one end of the top shelf. Writing materials were always on
+                    the desk. In the desk lay a manuscript translation of Hauptmann's
+                    <emph rend="italic">Michael Kramer</emph>, the stage directions of which were
+                    written in purple ink, and a little sheaf of papers held together by a brass
+                    pin. In these sheets a sentence was inscribed from time to time and, in an
+                    ironical moment, the headline of an advertisement for <emph rend="italic">Bile
+                        Beans</emph> had been pasted on to the first sheet. On lifting the lid of
+                    the desk a faint fragrance escaped&mdash;the fragrance of new cedarwood pencils
+                    or of a bottle of gum or of an over-ripe apple which might have been left there
+                    and forgotten. 
+                </p>
+                <p>
+                    Mr Duffy abhorred anything which betokened physical or mental disorder. A
+                    medieval doctor would have called him saturnine. His face, which carried the
+                    entire tale of his years, was of the brown tint of Dublin streets. On his long
+                    and rather large head grew dry black hair and a tawny moustache did not quite
+                    cover an unamiable mouth. His cheekbones also gave his face a harsh character;
+                    but there was no harshness in the eyes which, looking at the world from under
+                    their tawny eyebrows, gave the impression of a man ever alert to greet a
+                    redeeming instinct in others but often disappointed. He lived at a little
+                    distance from his body, regarding his own acts with doubtful side-glances. He
+                    had an odd autobiographical habit which led him to compose in his mind from time
+                    to time a short sentence about himself containing a subject in the third person
+                    and a predicate in the past tense. He never gave alms to beggars and walked
+                    firmly, carrying a stout hazel. 
+                </p>
+                <p> 
+                    He had been for many years cashier of a private bank in Baggot Street. Every
+                    morning he came in from Chapelizod by tram. At midday he went to Dan Burke's and
+                    took his lunch&mdash;a bottle of lager beer and a small trayful or arrowroot
+                    biscuits. At four o'clock he was set free. He dined in an eating-house in
+                    George's Street where he felt himself safe from the society of Dublin's gilded
+                    youth and where there was a certain plain honesty in the bill of fare. His
+                    evenings were spent either before his landlady's piano or roaming about the
+                    outskirts of the city. His liking for Mozart's music brought him sometimes to an
+                    opera or a concert: these were the only dissipations of his life.
+                </p>
+                <p> 
+                    He had neither companions nor friends, church nor creed. He lived his spiritual
+                    life without any communion with others, visiting his relatives at Christmas and
+                    escorting them to the cemetery, when they died. He performed these two social
+                    duties for old dignity's sake but conceded nothing further to the conventions
+                    which regulate the civic life. He allowed himself to think that in certain
+                    circumstances he would rob his bank but, as these circumstances never arose, his
+                    life rolled out evenly&mdash;an adventureless tale. 
+                </p>
+                <p> 
+                    One evening he found himself sitting beside two ladies in the Rotunda. The
+                    house, thinly peopled and silent, gave distressing prophecy of failure. 
+                    <seg type="discours-direct">
+                        <seg type="discours-citant" subtype="incise-position-initiale">
+                            <persName ref="#EmilySinico">The lady who sat next him</persName>
+                            looked round at the deserted house once or twice and then
+                            <w type="verbe" subtype="parole">said</w>
+                            <pc function="introducteur-discours-rapporté">:</pc>
+                        </seg>
+                        <lb/>
+                        <seg type="discours-cité">
+                            <q type="spoken">
+                                <pc function="introducteur-dicours-rapporté">&mdash;</pc>
+                                What a pity there is such a poor house to-night! It's so hard on people to have
+                                to sing to empty benches.
+                            </q>
+                        </seg>
+                    </seg>
+                </p>
+                <p>
+                    He took the remark as an invitation to talk. He was surprised that she seemed so
+                    little awkward. While they talked he tried to fix her permanently in his memory.
+                    When he learned that the young girl beside her was her daughter he judged her to
+                    be a year or so younger than himself. Her face, which must have been handsome,
+                    had remained intelligent. It was an oval face with strongly marked features. The
+                    eyes were very dark blue and steady. Their gaze began with a defiant note but
+                    cwas confused by what seemed a deliberate swoon of the pupil into the iris,
+                    revealing for an instant a temperament of great sensibility The pupil reasserted
+                    itself quickly, this halk-diclosed nature fell again under the reign of
+                    prudence, and her astrakhan jacket, moulding a bosom of a certain fulness,
+                    struck the note of defiance more definitely.
+                </p>
+                <p> 
+                    He met her again a few weeks afterwards at a concert in Earlsfort Terrace and
+                    seized the moments when her daughter's attention was diverted to become
+                    intimate. 
+                    <seg type="discours-narrativisé">
+                        <persName ref="#Emily-Sinico">She</persName>
+                        <w type="verbe" subtype="parole">alluded</w> once or twice to 
+                        <persName ref="#CapitaineSinico">her husband</persName>
+                    </seg> 
+                    but her tone was not such as to make the allusion a warning. 
+                    <seg type="discours-indirect-libre" subtype="pragmatique">
+                        <w type="pronom" function="marqueur-discours-indirect-libre">Her</w>
+                        name was Mrs Sinico.
+                        <w type="pronom" function="marqueur-discours-indirect-libre">Her</w>
+                        husband's great-great-grandfather had come from Leghorn. 
+                        <phr type="nominal" function="marqueur-discours-indirect-libre">Her husband</phr>
+                        was captain of a mercantile boat plying between Dublin and Holland; and 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">they</w> 
+                        had one child.
+                    </seg>
+                </p>
+                <p> 
+                    Meeting her a third time by accident he found courage to make an appointment.
+                    She came. This was the first of many meetings; they met always in the evening
+                    and chose the most quiet quarters for their walks together. Mr Duffy, however,
+                    had a distaste for underhand ways and, finding that they were compelled to meet
+                    stealthily, he forced her to ask him to her house. Captain Sinico encouraged his
+                    visits, thinking that his daughter's hand was in question. He had dismissed his
+                    wife so sincerely from his gallery of pleasures that he did not suspect that
+                    anyone else would take an interest in her. As the husband was often away and the
+                    daughter out giving music lessons Mr Duffy had many opportunities of enjoying
+                    the lady's society. Neither he nor she had any such adventure before and neither
+                    was conscious of any incongruity. Little by little he entangled his thoughts
+                    with hers. He lent her books, provided her with ideas, shared his intellecutal
+                    life with her. She listened to all. 
+                </p>
+                <p> 
+                    Sometimes in return for his theories she gave out some fact of her own life.
+                    With almost maternal solicitude 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale" function="introducteur-discours-rapporté">
+                            <persName ref="#EmilySinico">she</persName> urged him
+                        </cl>
+                        <cl type="subordonnée" subtype="infinitive">
+                            <w type="particule" function="conjonction-subordination">to</w> 
+                            let his nature open to the full
+                        </cl>
+                    </seg>; she became his confessor. 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#JamesDuffy">He</persName>
+                            <w type="verbe" subtype="parole">told</w> her
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            for some time he had assisted at the meetings of an Irish Socialist Party 
+                            where he had felt himself a unique figure amidst a score of sober workmen 
+                            in a garret lit by an inefficient oil-lamp.
+                        </cl>
+                    </seg> 
+                    When the party had divided into three sections, each under its own leader and 
+                    in its own garret, he had discontinued his attendances. 
+                    <seg type="discours-indirect" subtype="semi-libre"> The workmen's discussions, 
+                        <cl type="incise" subtype="position-médiane">he said</cl>,
+                        were too timorous; the interest they took in the question of wages was inordinate.
+                    </seg> 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">He felt</cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            they were hard-featured realists
+                        </cl>
+                        <w type="conjonction" subtype="coordination">and</w>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            they resented an exactitude which was the product of a leisure not within their reach.
+                        </cl>
+                    </seg>
+                    <seg type="discours-indirect" subtype="semi-libre">No social revolution, 
+                        <cl type="incise" subtype="position-médiane">he told her</cl>, 
+                        would be likely to strike Dublin for some centuries.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="hybride">
+                        <cl type="principale">
+                            <persName ref="#EmilySinico">She</persName>
+                            <w type="verbe" subtype="parole">asked</w> him
+                        </cl>
+                        <cl type="subordonnée" subtype="interrogative-directe">
+                            <w type="conjonction" subtype="subordination">why</w> 
+                            did he not write out his thoughts.
+                        </cl> 
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire-avec-incise">
+                        For what,
+                            <cl type="incise" subtype="position-finale">
+                                he asked her, with careful scorn.                            
+                            </cl>
+                        To compete with phasemongers, incapable of thinking consecutively for sixty seconds? To submit 
+                        <w type="pronom" subtype="réflexif" function="marqueur-discours-indirect-libre">himself</w> 
+                        to the criticisms of an obtuse middle class which entrusted
+                        its morality to policemen and its fine arts to impresarios?
+                    </seg>
+                </p>
+                <p> 
+                    He went often to her little cottage outside Dublin; often they spent their
+                    evenings alone. Little by little, as their thoughts entangled, 
+                    <seg type="discours-narrativisé">
+                        they spoke of subjects less remote.
+                    </seg>
+                    Her companionship was like a warm soil about an exotic. Many times she allowed the
+                    dark to fall upon them, refraining from lighting the lamp. The dark discreet
+                    room, their isolation, the music that still vibrated in their ears united them.
+                    This union exalted him, wore away the rough edges of his character,
+                    emotionalized his mental life. Sometimes he caught himself listening to the
+                    sound of his own voice. 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">                            
+                            <persName ref="#JamesDuffy">He</persName>
+                            <w type="verbe" subtype="pensée">thought</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            in her eyes he would ascend to an angelical stature;
+                        </cl>
+                    </seg>
+                    and, as he attached the fervent nature of his companion more and more closely to him, 
+                    <seg type="segment-contextualisant" function="introducteur-discours-indirect-libre">
+                        he heard the strange impersonal voice which he recognized as his own,
+                    </seg> 
+                    insisting on the soul's incurable loneliness. 
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        We cannot give ourselves, 
+                        <phr type="verbal" function="marqueur-discours-indirect-libre">it said</phr>: 
+                        we are our own.
+                    </seg> 
+                    The end of these discourses was that one night during which she
+                    had shown every sign of unusual excitement, Mrs Sinico caught up his hand
+                    passionately and pressed it to her cheek. 
+                </p>
+                <p> 
+                    Mr Duffy was very much surprised. Her interpretation of his words disillusioned
+                    him. He did not visit her for a week; then 
+                    <seg type="discours-indirect" subtype="classique">
+                        <persName ref="#JamesDuffy">he</persName>
+                        <w type="verbe" subtype="action">wrote</w> to her 
+                        <cl type="subordonnée" subtype="gérondive">
+                            <w type="verbe" subtype="parole" function="conjonction-subordination">asking</w> 
+                            her to meet him.
+                        </cl>
+                    </seg> 
+                    As he did not wish their last interview to be troubled by
+                    the influence of their ruined confessional they met in a little cakeshop near
+                    the Parkgate. It was cold autumn weather but in spite of the cold they wandered
+                    up and down the roads of the Park for nearl three hours. 
+                    <seg type="discours-direct">
+                        <cl type="segment-contextualisant" function="introducteur-discours-direct">
+                            They agreed to break off their intercourse</cl>
+                        <pc function="introducteur-discours-direct">:</pc>
+                        <q type="spoken">every bond, 
+                            <cl type="incise" subtype="position-médiane">he said</cl>, 
+                            is a bond to sorrow.
+                        </q>
+                    </seg> 
+                    When they came out of the park they walked in silence towards the tram; 
+                    but here she began to tremble so violently that, feeling another collapse on her part, 
+                    he bade her good-bye quickly and left her. A few days later he received a parcel 
+                    containing his books and music. 
+                </p>
+                <p> 
+                    Four years passed. Mr Duffy returned to his even way of life. His room still
+                    bore witness of the orderliness of his mind. Some new pieces of music encumbered
+                    the music-stand in the lower room and on his shelves stood two volumes by
+                    Nietzsche: <emph rend="italic">Thus Spake Zarathustra</emph> and <emph
+                        rend="italic">The Gay Science</emph>. He wrote seldom in the sheaf of papers
+                    which lay in his desk.
+                    <seg type="effet-de-discours-rapporté">
+                        One of his sentences, written two months after his last interview with Mrs Sinico,
+                        read: Love between man and man is impossible because there must not be
+                        sexual intercourse and friendship between man and woman is impossible
+                        because there must be sexual intercourse.
+                    </seg> 
+                    He kept away from concerts lest she should meet her. His father died; the junior partner of the bank
+                    retired. And still every morning he went into the city by tram and every evening
+                    walked home from the city after having dined moderately in George's Street and
+                    read the evening paper for dessert. 
+                </p>
+                <p> 
+                    One evening as he was about to put a morsel of corned beef and cabbage into his
+                    mouth his hand stopped. His eyes fixed themselves on a paragraph in the evening
+                    paper which he had propped against the water-carafe. He replaced the morsel of
+                    food on his plate and read the paragraph attenively. Then he drank a glass of
+                    water, pushed his plate to one side, doubled the paper down before him between
+                    his elbows and read the paragraph over and over again. The cabbage began to
+                    deposit a cold white grease on his plate. 
+                    <seg type="discours-indirect" subtype="hybride">
+                        <cl type="principale">
+                            <persName ref="#Secondaire1">The girl</persName> came over to him to 
+                            <w type="verbe" subtype="parole">ask</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="interrogative-directe">
+                            was his dinner not properly cooked.
+                        </cl>
+                    </seg> 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#JamesDuffy">He</persName> said
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            it was very good
+                        </cl>
+                    </seg> 
+                    and ate a few mouthfuls of it with difficulty. Then he paid his bill and went out. 
+                </p>
+                <p> 
+                    He walked along quickly through the November twilight, his stout hazel stick
+                    striking the ground regularly, the fringe of the buff <emph rend="italic"
+                        >Mail</emph> peeping out of a side-pocket of his tight reefer overcoat. On
+                    the lonely road which leads from the Parkgate to Chapelizod he slackened his
+                    pace. His stick struck the ground less emphatically and his beath, issuing
+                    irregularly, almost with a sighing sound, condensed in the wintry air. When he
+                    reached his house he went up at once to his bedroom and, taking the paper from
+                    his pocket, read the paragraph again by the failing light of the window. He read
+                    it not aloud, but moving his lips as a priest does when he reads the prayers
+                        <emph rend="italic">Secreto</emph>. This was the paragraph: 
+                </p>
+            </div>
+            <div type="article-journal">
+                <head type="article-journal" subtype="titre-principal" rend="alignement(centré) casse(majuscules)">
+                    DEATH OF A LADY AT SYDNEY PARADE
+                </head>
+                <head type="article-journal" subtype="sous-titre" rend="alignement(centré) casse(petites-majuscules)">
+                    A PAINFUL CASE
+                </head>
+                <p> 
+                    To-day at the City of Dublin Hospital the Deputy Coroner (in the absence of Mr
+                    Leverett) held an inquest on the body of Mrs Emily Sinico, aged forty-three
+                    years, who was killed at Sydney Parade Station yesterday evening. The evidence
+                    showed that the deceased lady, while attempting to cross the line, was knocked
+                    down by the engine of the ten o'clock slow train from Kingstown, thereby
+                    sustaining injuries of the head and right side which led to her death.*
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#Secondaire2">James Lennon, driver of the engine</persName>,
+                            <w type="verbe" subtype="parole">stated</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            he had been in the employment of the railway company for fifteen years.
+                        </cl>
+                    </seg> 
+                    On hearing the guard's whistle he set the train in motion and a second or two 
+                    afterwards brought it to rest in response to loud cries. The train was going slowly. 
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#Secondaire3">P. Dunne, railway porter</persName>,
+                            <w type="verbe" subtype="parole">stated</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            as the train was about to start he observed a woman attempting to cross the lines.
+                        </cl>
+                    </seg>
+                    <seg type="discours-narrativisé">
+                        <persName ref="#Secondaire3">He</persName> 
+                        ran towards her and shouted
+                    </seg> 
+                    but, before he could reach her, she was caught by the buffer of the engine and fell to the ground. 
+                </p>
+                <p>
+                    <seg type="discours-direct" subtype="sans-incise">
+                        <persName ref="#Secondaire4">A juror</persName>
+                        <pc function="introducteur-discours-direct">&mdash;</pc>
+                        <q type="spoken">You saw the lady fall?</q>
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-direct" subtype="sans-incise">
+                        <persName ref="Secondaire5">Witness</persName>
+                        <pc function="introducteur-discours-direct">&mdash;</pc>
+                        <q type="spoken">Yes.</q>
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#Secondaire6">Police Sergeant Croly</persName>
+                            <w type="verbe" subtype="parole">deposed</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            when he arrived he found the deceased lying on the platform apparently dead.
+                        </cl>
+                    </seg> 
+                    He had the body taken to the waiting-room pending the arrival of the ambulance. 
+                </p>
+                <p>
+                    <seg type="discours-narrativisé">
+                        <persName ref="Secondaire7">Constable 57E</persName> corroborated.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="Secondaire8">
+                                Dr Halpin, assistant house surgeon of the City of Dublin Hospital
+                            </persName>, 
+                            <w type="verbe" subtype="parole">stated</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            the deceased had two lower ribs fractured and had sustained severe contusions
+                            of the right shoulder.
+                        </cl>
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire">
+                        The right side of the head had been injured in the fall. The injuries were not sufficient to have
+                        caused death in a normal person. Death, 
+                        <phr function="marqueur-discours-indirect-libre">in his opinion</phr>,
+                        had been probably due to shock and sudden failure of the heart's action.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="segment-contextualisant" function="introducteur-discours-indirect-libre">
+                        <persName ref="#Secondaire9">Mr H. B. Patterson Finlay</persName>, 
+                        on behalf of the railway company, expressed his deep regret at the accident.
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire">
+                        The company had always taken every precaution to prevent people crossing the lines except by the
+                        bridges, both by placing notices in every station and by the use of patent
+                        spring gates at level crossings. The deceased had been in the habit of
+                        crossing the lines late at night from platform to platform and, in view of
+                        certain other circumstances of the case, 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w> 
+                        did not think the railway officials were to blame.
+                    </seg>
+                </p>
+                <p>
+                    <persName ref="#CapitaineSinico">Captain Sinico, of Leoville, Sydney Parade, husband of the deceased</persName>,
+                    also gave evidence. 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#CapitaineSinico">He</persName>
+                            <w type="verbe" subtype="parole">stated</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w>
+                            <persName ref="#EmilySinico">the deceased</persName> 
+                            was his wife.
+                        </cl>
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire">
+                        <w type="pronom" function="marqueur-discours-indirect-libre">He</w> 
+                        was not in Dublin at the time of the accident as 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w> 
+                        had arrived only that morning from Rotterdam. 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">They</w> 
+                        had been married for twenty-two years and had lived happily until about two years ago when
+                        <phr type="nominal" function="marqueur-discours-indirect-libre">his wife</phr> 
+                        began to be rather intemperate in 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">her</w> 
+                        habits.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#MarySinico">Miss Mary Sinico</persName>
+                            <w type="verbe" subtype="parole">said</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w>
+                            of late her mother had been in the habit of going out at night to buy spirits.
+                        </cl>
+                    </seg>
+                    <seg>
+                        <w type="pronom" function="marqueur-discours-indirect-libre">She</w>,
+                        witness, had often tried to reason 
+                        <phr type="nominal" function="marqueur-discours-indirect-libre">her mother</phr> 
+                        and had induced her to join a league.
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire">
+                        <w type="pronom" function="marqueur-discours-indirect-libre">She</w> 
+                        was not at home until an hour after the accident.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-narrativisé">
+                        <persName ref="Secondaire10">The jury</persName> 
+                        returned a verdict in accordance with the medical evidence 
+                        <w type="conjonction" subtype="coordination">and</w> 
+                        exonerated Lennon from all blame.
+                    </seg>
+                </p>
+                <p>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="Secondaire11">The Deputy Coroner</persName>
+                            <w type="verbe" subtype="parole">said</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            it was a most painful case,
+                        </cl>
+                        <w type="conjonction" subtype="coordination">and</w>
+                        <w type="verbe" subtype="parole" function="proposition-principale">expressed</w>
+                        <cl type="subordonnée" subtype="complétive">
+                            great sympathy with Captain Sinico and his daughter.
+                        </cl>
+                    </seg>
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#Secondaire11">He</persName>
+                            <w type="verbe" subtype="action">urged</w> 
+                            on the railway company
+                        </cl>
+                        <cl type="subordonnée" subtype="infinitive">
+                            <w type="particule" function="conjonction-subordination">to</w> 
+                            take strong measures to prevent the possibility of similar accidents in the future.
+                        </cl>
+                    </seg>
+                    No blame attached to anyone. 
+                </p>
+            </div>
+
+            <div type="histoire">
+                <p> 
+                    Mr Duffy raised his eyes from the paper and gazed out of his windown on the
+                    cheerless evening landscape. The river lay quiet beside the empty distillery and
+                    from time to time a light appeared in some house on the Lucan road. 
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        What an end
+                        <pc function="marqueur-discours-direct-libre">!</pc>
+                    </seg> 
+                    The whole narrative of her death revolted him and it revolted him to think that he had
+                    ever spoken to her of what he held sacred. The threadbare phrases, the inane
+                    expressions of sympathy, the cautious words of a reporter won over to conceal
+                    the details of a commonplace vulgar death attacked his stomach.
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        Not merely had she degraded herself; she had degraded 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w>.
+                        <w type="pronom" function="marqueur-discours-indirect-libre">He</w> saw the 
+                        <w type="adjectif" subtype="qualificatif" function="marqueur-subjectivité">squalid</w> tract of her vice, 
+                        <w type="adjectif" subtype="qualificatif" function="marqueur-subjectivité">miserable</w>
+                        and <w type="adjectif" subtype="qualificatif" function="marqueur-subjectivité">malodorous</w>. 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">His</w> soul's companion
+                        <pc function="marqueur-subjectivité">!</pc>
+                    </seg> 
+                    He thought of the hobbling wretches whom he had seen carrying cans and bottles to be filled by the barman.
+                    <seg type="discours-direct" subtype="libre">
+                        Just God, what an end
+                        <pc function="marqueur-subjectivité">!</pc>
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="locutoire">
+                        Evidently she had been  unfit to live, without any strength of purpose, an easy prey to habits, one
+                        of the wrecks on which civilisation has been reared. But that she could have sunk so low
+                        <pc function="marqueur-subjectivité">!</pc> 
+                        Was it possible 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w> had deceived 
+                        <w type="pronom" subtype="réflexif" function="marqueur-discours-indirect-libre">himself</w> 
+                        so utterly about her
+                        <pc function="marqueur-subjectivité">?</pc>
+                    </seg> 
+                    He remembered her outburst of that night and interpreted it in a harsher sense than he had ever
+                    done. He had no difficulty now in approving of the course he had taken. 
+                </p>
+                <p> 
+                    As the light failed and his memory began to wander he thought her hand touched
+                    his. The shock which had first attacked his stomach was now attacking his
+                    nerves. He put on his overcoat and hat quickly and went out. The cold air met
+                    him on the threshold; it crept into the sleeves of his coat. When he came to the
+                    public-house at Chapelizod Bridge he went in and ordered a hot punch. 
+                </p>
+                <p> 
+                    The proprietor served him obsequiously but did not venture to talk. 
+                    <seg type="discours-narrativise">
+                        There were five or six working-men in the shop discussing the value of a gentleman's 
+                        estate in County Kildare.
+                    </seg>
+                    They drank at intervals from their huge pint tumblers and smoked, spitting often on
+                    the floor and sometimes dragging the sawdust over their spits with their heavy
+                    boots. Mr Duffy sat on his stoll and gazed at them, without seeing or hearing
+                    them. After a while they went out and he called for another punch. He sat a long
+                    time over it. The shop was very quiet. The proprietor sprawled on the counter
+                    reading the <emph rend="italic">Herald</emph> and yawning. Now and again a tram
+                    was heard swishing along the lonely road outside. 
+                </p>
+                <p> 
+                    As he sat there, living over his life with her and evoking alternately the two
+                    images in which he now conceived her, 
+                    <seg type="discours-indirect" subtype="classique">
+                        <cl type="principale">
+                            <persName ref="#JamesDuffy">he</persName>
+                            <w type="verbe" subtype="pensée">realized</w>
+                        </cl>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            she was dead
+                        </cl>
+                        <pc function="conjonction-coordination">,</pc>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            she had ceased to exist
+                        </cl>
+                        <pc function="conjonction-coordination">,</pc>
+                        <cl type="subordonnée" subtype="complétive">
+                            <w type="conjonction" subtype="subordination">that</w> 
+                            she had become a memory.
+                        </cl>
+                    </seg>
+                    He began to feel ill at ease. 
+                    <seg type="discours-indirect" subtype="hybride">
+                        <cl type="principale">He asked himself</cl>
+                        <cl type="subordonnée" subtype="interrogative-directe">
+                            <w type="pronom" subtype="interrogatif" function="conjonction-subordination">what</w>
+                            else could he have done.
+                        </cl>
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        <w type="pronom" function="marqueur-discours-indirect-libre">He</w> 
+                        could not have carried on a comedy of deception with her; 
+                        <w type="pronom"
+                            function="marqueur-discours-indirect-libre">he</w> 
+                        could not have lived with her openly. 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">He</w> 
+                        had done what seemed to be best. How was 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w> 
+                        to blame
+                        <pc function="marqueur-subjectivité">?</pc> 
+                        Now that she was gone 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w>
+                        understood how lonely her life must have been, sitting night after night
+                        alone in that room. 
+                        <phr type="nominal" function="marqueur-discours-indirect-libre">His life</phr> 
+                        would be lonely too until 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w>, too, 
+                        died, ceased to exist, became a memory&mdash;if anyone remembered 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w>.
+                    </seg>
+                </p>
+                <p> 
+                    It was after nine o'clock when he left the shop. The night was cold and gloomy.
+                    He entered the park by the first gate and walked along under the gaunt trees. He
+                    walked through the bleak alleys where they had walked four years before. She
+                    seemed to be near him in the darkness. At momets he seemed to feel her voice
+                    touch his ear, her hand touch his. He stood still to listen. 
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        Why had 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w>
+                        withheld life from her
+                        <pc function="marqueur-subjectivité">?</pc> 
+                        Why had 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w>
+                        sentenced her to death
+                        <pc function="marqueur-subjectivité">?</pc>
+                    </seg> 
+                    He felt his moral nature falling to pieces. 
+                </p>
+                <p> 
+                    When he gained the crest of the Magazine Hill he halted and looked along the
+                    river towards Dublin, the lights of which burned redly and hospitably in the
+                    cold night. He looked down the slope and, at the base, in the shadow of the wall
+                    of the park, 
+                    <seg type="segment-contextualisant" function="introducteur-discours-indirect-libre">
+                        he saw some human figure lying.
+                    </seg> 
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        Those
+                        <w type="adjectif" subtype="qualificatif" function="marqueur-subjectivité">venal</w> and 
+                        <w type="adjectif" subtype="qualificatif" function="marqueur-subjectivité">furtive</w> loves
+                    </seg> 
+                    filled him with despair. 
+                    <seg type="segment-contextualisant" function="introducteur-discours-indirect-libre">
+                        He gnawed the rectitude of his life; he felt that he had been outcast from life's feast.
+                    </seg>
+                    <seg type="discours-indirect-libre" subtype="endophasique">
+                        One human being had seemed to love 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w> and 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">he</w> 
+                        had denied her life and happiness: 
+                        <w type="pronom" function="marqueur-discours-indirect-libre" >he</w> 
+                        had sentenced her to ignominy, 
+                        <phr type="nominal" function="marqueur-subjectivité">a death of shame</phr>. 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">He</w> 
+                        knew that the prostrate creatures down by the wall were watching 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w> and wished 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w> gone.
+                        No one wanted 
+                        <w type="pronom" function="marqueur-discours-indirect-libre">him</w>; 
+                        <w type="pronom" function="marqueur-discours-indirect-libre" >he</w> 
+                        was outcast from life's feast.
+                    </seg> 
+                    He turned his eyes to thegrey gleaming river, winding along towards Dublin. Beyond the river he saw a
+                    goods train winding out of Kingsbridge Station, like a worm with a fiery head
+                    winding through the darkness, obstinately and laboriously. It passed slowly out
+                    of sight; but still he heard in his ears the laborious drone of the engine
+                    reiterating the syllables of her name. 
+                </p>
+                <p> 
+                    He turned back the way he had come, the rhythm of the engine pounding in his
+                    ears. He began to doubt the reality of 
+                    <seg type="effet-de-discours-rapporté">
+                        what memory told him.
+                    </seg> 
+                    He halted under a tree and allowed the rhythm
+                    to die away. He could not feel her near him in the darkness nor her voice touch
+                    his ear. He waited for some minutes listening. He could hear nothing: the night
+                    was perfectly silent. He listened again: perfectly silent. He felt that he was
+                    alone. 
+                </p>
+            </div>
+        </body>
+    </text>
+</TEI>
